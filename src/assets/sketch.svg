@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="94px" viewBox="0 0 94 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>sketch_slice</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-452.000000, -1110.000000)">
+            <g id="sketch" transform="translate(465.000000, 1115.000000)">
+                <path d="M6,0 L51.437198,0 L51.437198,0 L68,21.3728059 L68,78 C68,81.3137085 65.3137085,84 62,84 L6,84 C2.6862915,84 4.05812251e-16,81.3137085 0,78 L0,6 C-4.05812251e-16,2.6862915 2.6862915,6.08718376e-16 6,0 Z" id="矩形" fill="#F3C802"></path>
+                <g id="编组" transform="translate(13.000000, 24.000000)" fill-rule="nonzero">
+                    <polygon id="路径" fill="#FDB300" points="9.165 1.185 21 0 32.835 1.185 42 12.837 21 36 0 12.837"></polygon>
+                    <path d="M8.505,12.837 L21,36 L0,12.837 L8.505,12.837 Z M33.495,12.837 L21,36 L42,12.837" id="形状" fill="#EA6C00"></path>
+                    <polyline id="路径" fill="#FDAD00" points="8.505 12.837 33.495 12.837 21 36"></polyline>
+                    <path d="M21,0 L9.1635,1.185 L8.5065,12.837 L21,0 Z M21,0 L32.835,1.185 L33.495,12.837" id="形状" fill="#FDD231"></path>
+                    <path d="M42,12.837 L32.8365,1.185 L33.4935,12.837 L42,12.837 Z M0,12.837 L9.1635,1.185 L8.5065,12.837" id="形状" fill="#FDAD00"></path>
+                    <polyline id="路径" fill="#FEEEB7" points="21 0 8.505 12.837 33.495 12.837"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,353 @@
+.topTitle {
+  padding: 15px 0;
+  margin: 0 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ebeced;
+}
+
+.topIcon {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    margin-right: 8px;
+  }
+
+  span {
+    font-family: AlibabaPuHuiTiB, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-size: 21.6px;
+    color: #000000;
+    letter-spacing: 0;
+    font-weight: 700;
+  }
+}
+
+.main {
+  margin: 70px 60px 40px 30px;
+  display: flex;
+}
+
+.leftSection,
+.rightSection {
+  width: 50%;
+}
+
+.noHeaderHeight {
+  height: calc(100vh - 138px);
+}
+
+.hasHeaderHeight {
+  height: calc(100vh - 200px);
+}
+
+.iMHeaderHeight {
+  height: calc(100vh - 243px);
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  align-items: center;
+
+  .shIcon {
+    width: 213px;
+    height: 45px;
+    margin-bottom: 15px;
+  }
+  .borderBot{
+    width: 80%;
+    border-bottom: 1px solid #EBECED;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28.5px;
+  }
+  .tipsBox {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 26px;
+
+    span {
+      font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma;
+      font-size: 16px;
+      color: #666666;
+      letter-spacing: 3px;
+      font-weight: 400;
+    }
+  }
+
+  .shImg{
+    // width: 572px;
+    // height: 485px;
+    width: 70%;
+
+  }
+
+}
+
+.rightSection {
+  border-left: 1px solid #d6d7d9;
+  padding-left: 60px;
+  // overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .createMeetFn {
+    margin-bottom: 33px;
+    span {
+      display: inline-block;
+      width: 120px;
+      height: 35px;
+      line-height: 35px;
+      background: #168fff;
+      border-radius: 4px;
+      font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma;
+      font-size: 14px;
+      color: #ffffff;
+      text-align: center;
+      font-weight: 400;
+    }
+  }
+
+  .metting {
+    margin-bottom: 22px;
+
+    h3 {
+      font-family: PingFangSC-Medium, Helvetica, Arial, Verdana, Tahoma,
+        sans-serif;
+      font-size: 14px;
+      color: #000000;
+      letter-spacing: 0;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    p {
+      font-family: PingFangSC-Medium, Helvetica, Arial, Verdana, Tahoma,
+        sans-serif;
+      font-size: 12px;
+      color: #7d7f80;
+      letter-spacing: 0;
+      font-weight: 500;
+      position: relative;
+      text-align: center;
+
+      &::before,
+      &::after {
+        content: "";
+        display: inline-block;
+        width: calc(50% - 60px);
+        height: 1px;
+        background: #eaeced;
+        position: absolute;
+        top: 52%;
+      }
+
+      &::before {
+        left: 0%;
+      }
+
+      &::after {
+        right: 0%;
+      }
+    }
+  }
+
+  .meetingListBorder {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ebeced;
+  }
+
+  .meetingList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .meetingListInfo {
+    width: calc(100% - 72px);
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+  }
+
+  .meetingIcon {
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+  }
+
+  .meetingListName {
+    .meetingName {
+      margin-bottom: 2px;
+      font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma,
+        sans-serif;
+      font-size: 14px;
+      color: #000000;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+
+    .meetingNums {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 13px;
+        height: 12px;
+        margin-right: 8px;
+      }
+
+      span {
+        font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma,
+          sans-serif;
+        font-size: 12px;
+        color: #1890ff;
+        letter-spacing: 0;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .meetingBtn {
+    border: 1px solid rgba(24, 144, 255, 1);
+    border-radius: 4px;
+    width: 60px;
+    height: 32px;
+    font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma,
+      sans-serif;
+    font-size: 14px;
+    color: #1890ff;
+    font-weight: 400;
+    text-align: center;
+    line-height: 32px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.historyMeet {
+  h3 {
+    font-family: PingFangSC-Medium, Helvetica, Arial, Verdana, Tahoma,
+      sans-serif;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .historyMeetKind {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    span {
+      font-family: PingFangSC-Medium, Helvetica, Arial, Verdana, Tahoma,
+        sans-serif;
+      font-size: 14px;
+      color: #999999;
+      letter-spacing: 0;
+      font-weight: 500;
+      padding: 0 0 12px 0;
+
+      &:first-child {
+        margin-right: 24px;
+      }
+    }
+
+    .activeSpan {
+      color: #1890ff;
+      border-bottom: 2px solid #1890ff;
+    }
+  }
+
+  .list {
+    // height: 300px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .active {
+      background: #eff0f1;
+      border-radius: 8px;
+    }
+
+    .line {
+      padding: 12px 10px;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background: #eff0f1;
+        border-radius: 8px;
+      }
+
+      .iconLeft {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        margin-right: 12px;
+      }
+
+      .btween {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .info {
+        // display: flex;
+        // justify-content: center;
+        // flex-direction: column;
+
+        h3 {
+          font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma,
+            sans-serif;
+          font-size: 14px;
+          color: #000000;
+          letter-spacing: 0;
+          font-weight: 400;
+          margin-bottom: 2px;
+        }
+
+        p {
+          font-family: PingFangSC-Regular;
+          font-size: 12px;
+          letter-spacing: 0;
+          line-height: 17px;
+          font-weight: 400;
+          color: #727777;
+          margin-bottom: 0;
+
+          .wxy {
+            color: #ff5219;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jpaas-jmeeting-web
+  namespace: oain
+spec:
+  replicas: <REPLICA_NUM>
+  selector:
+    matchLabels:
+      app: jpaas-jmeeting-web
+  template:
+    metadata:
+      labels:
+        app: jpaas-jmeeting-web
+    spec:
+      containers:
+        - name: jpaas-jmeeting-web
+          image: docker.hanweb.com/client/web-pc/web/jmeeting-web:<BUILD_TAG>
+          volumeMounts:
+          - mountPath: /etc/nginx/nginx.conf
+            name: nginx-config-volume
+            subPath: path/to/nginx.conf
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config-jmeeting-web
+          items:
+          - key: nginx.conf
+            path: path/to/nginx.conf

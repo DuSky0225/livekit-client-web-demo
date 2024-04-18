@@ -1,0 +1,9 @@
+node_modules
+dist
+src/index.html
+src/assets
+src/components
+src/tools
+static
+public
+package

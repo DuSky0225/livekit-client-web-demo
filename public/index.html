@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="pragram" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="expires" content="0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <script src="<%= BASE_URL %>js/basic.js"></script>
+  <title></title>
+  <style>
+    p {
+      color: #000;
+    }
+
+    body {
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    html,
+    body {
+      height: 100vh;
+      /* margin: 0 !important; */
+    }
+
+    .elpopperWid {
+      min-width: 130px !important;
+      background: #202223 !important;
+      border: 1px solid rgba(75, 76, 75, 1) !important;
+      border-radius: 8px !important;
+    }
+
+    .el-popper .popper__arrow,
+    .el-popper .popper__arrow::after {
+      border: none !important;
+    }
+    .ant-modal{
+      top: 30vh !important;
+    }
+    .userSelector .ant-modal{
+      top: 100px !important;
+    }
+
+    .ant-message {
+      z-index: 3000 !important;
+    }
+    .global-header-box-front {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but productsfe doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app" style="overflow: hidden;">
+  </div>
+  <script src="/ucenter_files/tempfile/platform.js"></script>
+  <!-- <script src="/jpaas/vendor/vendor.dll.js"></script> -->
+  <script src="/jpaas/header/header.js"></script>
+</body>
+<script src="<%= BASE_URL %>js/jquery-1.10.2.min.js"></script>
+<script src="<%= BASE_URL %>js/adapter-7.4.0.min.js"></script>
+<!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script> -->
+
+</html>

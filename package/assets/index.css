@@ -1,0 +1,873 @@
+.mask span {
+  font-size: 12px;
+}
+
+.audio-mask {
+  position: absolute;
+  /* height: 100vh;
+  width: 100vw; */
+  display: flex;
+  justify-content: center;
+  /* background-color: #999999ab; */
+  /* z-index: 999; */
+  padding-top: 100px;
+  box-sizing: border-box;
+  align-items: baseline !important;
+}
+
+.audio-center {
+  display: flex;
+  top: -80px;
+  padding: 8px 12px;
+  align-items: center;
+  font-size: 14px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 6px;
+  z-index: 999;
+}
+
+.audio-center>img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.state {
+  width: 100%;
+  height: 112px;
+  opacity: 0.8;
+  background: #1e1e1e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 400;
+  z-index: 999;
+}
+
+.closeSxt {
+  height: 100%;
+}
+
+.meeting_timeBox {
+  flex-shrink: 0;
+}
+
+.meeting_time {
+  font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.recordBox {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.redCircle {
+  width: 21.2px;
+  height: 21.2px;
+  margin: 0 10px 0 24px;
+  animation: 3s opacity2 0s infinite;
+  -webkit-animation: 3s opacity2 0s infinite;
+  -moz-animation: 3s opacity2 0s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes opacity2 {
+  0% {
+    opacity: 0
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes opacity2 {
+  0% {
+    opacity: 0
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes opacity2 {
+  0% {
+    opacity: 0
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.meeting_text {
+  /* width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
+  font-family: PingFangSC-Semibold, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-left: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.back_img {
+  width: 19px;
+  height: 19px;
+}
+
+.meeting {
+  margin-top: 16px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  width: calc(100% - 250px);
+}
+#videoBox{
+  position: absolute;
+  top: 52px;
+  right: 232px;
+  background: #000000;
+  width: calc(100% - 262px);
+  height: calc(100% - 138px);
+}
+#bigvideo {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+#rtc_media_player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+
+#rtc_media_publisher {
+  width: 100%;
+  height: 100%;
+}
+
+.main ::-webkit-scrollbar {
+  width: 0;
+}
+
+.main ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.setmodeBtn {
+  position: relative;
+}
+
+.left {
+  position: relative;
+}
+
+.recordTips {
+  width: 214px;
+  height: 40px;
+  background: #202122;
+  border: 0.5px solid rgba(77, 78, 78, 1);
+  border-radius: 8px;
+  position: absolute;
+  top: 94px;
+  right: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.recordTips .txt {
+  font-family: PingFangSC-Regular;
+  line-height: 40px;
+  font-size: 14px;
+  color: #D8D8D8;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.recordEndPage {
+  z-index: 999999;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-top: 249px; */
+}
+
+.recordEndPage .recordEndBox {
+  width: 280px;
+  height: 156px;
+  background: #1F2122;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.recordEndPage .recordEndBox .recordTitle {
+  padding: 16px 0 12px 0;
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.recordEndPage .recordEndBox .recordMsg {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #8E9091;
+  line-height: 20px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.recordEndPage .recordEndBox .btnGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.recordEndPage .recordEndBox .btnGroup .continueBtn {
+  width: 116px;
+  height: 32px;
+  background: #666666;
+  border-radius: 4px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.recordEndPage .recordEndBox .btnGroup .endBtn {
+  width: 116px;
+  height: 32px;
+  background: #1677FF;
+  border-radius: 4px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.whiteTips {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  height: 40px;
+  padding: 0 16px;
+  top: 152px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 9999999;
+}
+
+.whiteTips .text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 22px;
+  font-weight: 400;
+  margin: 0 24px 0 8px;
+}
+
+.whiteTips .icon {
+  width: 14px;
+  height: 14px;
+  color: #1677FF;
+}
+
+.whiteTips .deletIcon {
+  width: 14px;
+  height: 14px;
+  color: #999999;
+  cursor: pointer;
+}
+
+.timeOverPage {
+  z-index: 999999;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeOverPage .timeOverBox {
+  width: 484px;
+  height: 169px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px 0 10px 0;
+}
+
+.timeOverPage .timeOverBox .timeOverTop {
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px 16px 24px;
+  border-bottom: 1px solid #00000017;
+}
+
+.timeOverPage .timeOverBox .timeOverTop .timeOverTitle {
+  height: 24px;
+  font-family: PingFangSC-Medium;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000d9;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.timeOverPage .timeOverBox .timeOverTop .timeOverMsg {
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000d9;
+}
+
+.timeOverPage .timeOverBox .btnGroup {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 17px 10px 0;
+}
+
+.timeOverPage .timeOverBox .btnGroup .endBtn {
+  /* width: 88px; */
+  padding: 0 16px;
+  height: 32px;
+  background: #1890FF;
+  border-radius: 4px;
+  border: none;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: left;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.recall {
+  cursor: pointer;
+}
+
+.member2 {
+  box-sizing: border-box;
+  padding-left: 16px;
+  padding-right: 15px;
+  position: relative;
+  height: 100%;
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
+.main {
+  display: flex;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+
+
+
+}
+
+.main>.left {
+  background: #232425;
+  flex: 5;
+}
+
+button {
+  margin-left: 15px;
+}
+
+body {
+  /* padding-top: 30px; */
+}
+
+.span {
+  display: inline-block;
+}
+
+* {
+  padding: 0;
+}
+
+.state3 {
+  position: absolute;
+  z-index: 999;
+  font-size: 6px;
+  color: #fff;
+  margin-left: 1px;
+}
+
+.bigvideo_box_span,
+.bigvideo_box_span_share {
+  /* position: absolute;
+  left: 35%;
+  top: 45%;
+  font-size: 18px; */
+  color: #fff;
+  background: #000;
+  width: calc(100% - 262px);
+  height: calc(100% - 138px);
+  position: absolute;
+  top: 52px;
+  right: 232px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigvideo_box_span_share {
+  background: #000;
+}
+
+.bigvideo_box_span_share_img {
+  width: 40px;
+  height: 36px;
+}
+
+.bigvideo_box_span_share_span {
+  font-size: 40px;
+  color: #CCCCCC;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.select {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.select>.select_img {
+  width: 102px;
+  height: 102px;
+  position: absolute;
+  left: -1px;
+  top: -1px;
+}
+
+.select_img_name {
+  width: 102px;
+  height: 102px;
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  line-height: 102px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  background: #0078EF;
+  border-radius: 50%;
+}
+
+.settings {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.setting_desc_box {
+  padding-left: 5px;
+  flex-shrink: 0;
+  margin-left: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.setting_desc {
+  font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #1890FF;
+  text-align: right;
+  font-weight: 400;
+  cursor: pointer;
+  width: 18px;
+}
+
+.settings {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings_box {
+  width: 800px;
+  height: 534px;
+  background: #fff;
+  border-radius: 4px;
+
+}
+
+.content {
+  line-height: 1.5;
+  padding-bottom: 32px;
+  background: #fff;
+  position: relative;
+  border-radius: 4px;
+  height: 100%;
+}
+
+.content_img {
+  width: 65%;
+  margin-top: 16px;
+}
+
+h1 {
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.setting_title {
+  border-radius: 4px;
+  width: 800px;
+  height: 55px;
+  font-family: PingFangSC-Medium, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+  /* line-height: 28px; */
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  line-height: 55px;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  background: #fff;
+  z-index: 99;
+  font-size: 20px;
+}
+
+.setting_queding {
+  border-radius: 4px;
+  width: 800px;
+  height: 55px;
+  line-height: 55px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background: #fff;
+  bottom: 0;
+  z-index: 99;
+}
+
+.setting_queding span {
+  display: inline-block;
+  width: 160px;
+  height: 32px;
+  background: #1890FF;
+  border-radius: 4px;
+  font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  /* text-align: left; */
+  /* line-height: 22px; */
+  font-weight: 400;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+p {
+  font-family: PingFangSC-Regular, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #666666;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.img_deleted {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.contnet_text {
+  height: 510px;
+  padding: 0 32px 24px 32px;
+}
+
+.shareScreenBox {
+  position: absolute;
+  width: 684px;
+  height: 444px;
+  background: #1B1D1F;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  top: -50vh;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.shareScreenBox .shareBoxTitle {
+  background: #151616;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.shareScreenBox .shareBoxTitle .title {
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.shareScreenBox .shareBoxTitle .deletIcon {
+  width: 12px;
+  height: 12px;
+  color: #9D9EA0;
+  cursor: pointer;
+}
+
+.shareScreenBox .tabList {
+  display: flex;
+  border-bottom: 1px solid #343639;
+  height: 55px;
+  padding: 0 24px;
+}
+
+.shareScreenBox .tabList .tab {
+  display: inline-block;
+  height: 55px;
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: #8E8E8F;
+  letter-spacing: 0;
+  line-height: 55px;
+  font-weight: 500;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.shareScreenBox .tabList .tabActive {
+  display: inline-block;
+  height: 55px;
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 55px;
+  font-weight: 500;
+  border-bottom: 2px solid #fff;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.shareScreenBox .tabList .tabTip {
+  height: 55px;
+  font-family: PingFangSC-Medium;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0;
+  line-height: 55px;
+  margin-left: auto;
+}
+
+.shareScreenBox .shareScreenSelectBox {
+  padding: 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.shareScreenBox .shareScreenSelectBox .selectList {
+  display: flex;
+  flex-direction: column;
+  height: 230px;
+  overflow-y: auto;
+}
+
+.shareScreenBox .shareScreenSelectBox .selectList .selectTab {
+  display: block;
+  padding-left: 12px;
+  background: #1C1D1F;
+  border: 1px solid rgba(46, 48, 51, 1);
+  width: 300px;
+  height: 32px;
+  margin-bottom: 8px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #CCCCCC;
+  letter-spacing: 0;
+  text-align: left;
+  font-weight: 400;
+  line-height: 30px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.shareScreenBox .shareScreenSelectBox .selectList .selectTabActive {
+  display: block;
+  padding-left: 11px;
+  background: #2E2F32;
+  border: 2px solid rgba(56, 155, 255, 1);
+  width: 300px;
+  height: 32px;
+  margin-bottom: 8px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0;
+  text-align: left;
+  font-weight: 400;
+  line-height: 28px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.shareScreenBox .shareScreenSelectBox .screenBox {
+  width: 312px;
+  height: 230px;
+  padding: 20px 20px 0 20px;
+  background: #2E2F32;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shareScreenBox .shareScreenSelectBox .screenBox .screenImg {
+  width: 100%;
+  height: 160px;
+  margin-bottom: 10px;
+}
+
+.shareScreenBox .shareScreenSelectBox .screenBox .screenText {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: left;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.shareScreenBox .btnGroup {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 24px 24px 24px;
+}
+
+.shareScreenBox .btnGroup .confirmBtn {
+  width: 84px;
+  height: 36px;
+  background: #1890FF;
+  border-radius: 4px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.shareScreenBox .btnGroup .cancelBtn {
+  width: 84px;
+  height: 36px;
+  background: #4A4B4A;
+  border-radius: 4px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #DBDBDB;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 15px;
+}

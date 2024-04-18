@@ -1,0 +1,715 @@
+diff --git a/node_modules/livekit-client/dist/livekit-client.esm.mjs b/node_modules/livekit-client/dist/livekit-client.esm.mjs
+index 227a7b2..b2d636c 100644
+--- a/node_modules/livekit-client/dist/livekit-client.esm.mjs
++++ b/node_modules/livekit-client/dist/livekit-client.esm.mjs
+@@ -1,25 +1,26 @@
++var screenObj;
+ function _mergeNamespaces(n, m) {
+-	m.forEach(function (e) {
+-		e && typeof e !== 'string' && !Array.isArray(e) && Object.keys(e).forEach(function (k) {
+-			if (k !== 'default' && !(k in n)) {
+-				var d = Object.getOwnPropertyDescriptor(e, k);
+-				Object.defineProperty(n, k, d.get ? d : {
+-					enumerable: true,
+-					get: function () { return e[k]; }
+-				});
+-			}
+-		});
+-	});
+-	return Object.freeze(n);
++  m.forEach(function (e) {
++    e && typeof e !== 'string' && !Array.isArray(e) && Object.keys(e).forEach(function (k) {
++      if (k !== 'default' && !(k in n)) {
++        var d = Object.getOwnPropertyDescriptor(e, k);
++        Object.defineProperty(n, k, d.get ? d : {
++          enumerable: true,
++          get: function () { return e[k]; }
++        });
++      }
++    });
++  });
++  return Object.freeze(n);
+ }
+ 
+ var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+ 
+-function getDefaultExportFromCjs (x) {
+-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
++function getDefaultExportFromCjs(x) {
++  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+ }
+ 
+-var loglevel = {exports: {}};
++var loglevel = { exports: {} };
+ 
+ /*
+ * loglevel - https://github.com/pimterry/loglevel
+@@ -38,7 +39,7 @@ var loglevel = {exports: {}};
+   })(commonjsGlobal, function () {
+ 
+     // Slightly dubious tricks to cut down minimized file size
+-    var noop = function () {};
++    var noop = function () { };
+     var undefinedType = "undefined";
+     var isIE = typeof window !== undefinedType && typeof window.navigator !== undefinedType && /Trident\/|MSIE /.test(window.navigator.userAgent);
+     var logMethods = ["trace", "debug", "info", "warn", "error"];
+@@ -140,19 +141,19 @@ var loglevel = {exports: {}};
+         try {
+           window.localStorage[storageKey] = levelName;
+           return;
+-        } catch (ignore) {}
++        } catch (ignore) { }
+ 
+         // Use session cookie as fallback
+         try {
+           window.document.cookie = encodeURIComponent(storageKey) + "=" + levelName + ";";
+-        } catch (ignore) {}
++        } catch (ignore) { }
+       }
+       function getPersistedLevel() {
+         var storedLevel;
+         if (typeof window === undefinedType || !storageKey) return;
+         try {
+           storedLevel = window.localStorage[storageKey];
+-        } catch (ignore) {}
++        } catch (ignore) { }
+ 
+         // Fallback to cookies if local storage gives us nothing
+         if (typeof storedLevel === undefinedType) {
+@@ -162,7 +163,7 @@ var loglevel = {exports: {}};
+             if (location !== -1) {
+               storedLevel = /^([^;]+)/.exec(cookie.slice(location))[1];
+             }
+-          } catch (ignore) {}
++          } catch (ignore) { }
+         }
+ 
+         // If the stored level is not valid, treat it as if nothing was stored.
+@@ -178,12 +179,12 @@ var loglevel = {exports: {}};
+         try {
+           window.localStorage.removeItem(storageKey);
+           return;
+-        } catch (ignore) {}
++        } catch (ignore) { }
+ 
+         // Use session cookie as fallback
+         try {
+           window.document.cookie = encodeURIComponent(storageKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+-        } catch (ignore) {}
++        } catch (ignore) { }
+       }
+ 
+       /*
+@@ -316,7 +317,7 @@ function setLogExtension(extension) {
+     const logLevel = LogLevel[methodName];
+     const needLog = logLevel >= configLevel && logLevel < LogLevel.silent;
+     return (msg, context) => {
+-      if (context) rawMethod(msg, context);else rawMethod(msg);
++      if (context) rawMethod(msg, context); else rawMethod(msg);
+       if (needLog) {
+         extension(logLevel, msg, context);
+       }
+@@ -416,8 +417,8 @@ function setEnumType(enumObject, typeName, values, opt) {
+  * Create a new EnumType with the given values.
+  */
+ function makeEnumType(typeName, values,
+-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+-_opt) {
++  // eslint-disable-next-line @typescript-eslint/no-unused-vars
++  _opt) {
+   const names = Object.create(null);
+   const numbers = Object.create(null);
+   const normalValues = [];
+@@ -2195,7 +2196,7 @@ const protoBase64 = {
+   dec(base64Str) {
+     // estimate byte size, not accounting for inner padding and whitespace
+     let es = base64Str.length * 3 / 4;
+-    if (base64Str[base64Str.length - 2] == "=") es -= 2;else if (base64Str[base64Str.length - 1] == "=") es -= 1;
++    if (base64Str[base64Str.length - 2] == "=") es -= 2; else if (base64Str[base64Str.length - 1] == "=") es -= 1;
+     let bytes = new Uint8Array(es),
+       bytePos = 0,
+       // position in byte array
+@@ -2568,11 +2569,11 @@ function readScalar(type, json, longType) {
+     case ScalarType.UINT32:
+       if (json === null) return 0;
+       let int32;
+-      if (typeof json == "number") int32 = json;else if (typeof json == "string" && json.length > 0) {
++      if (typeof json == "number") int32 = json; else if (typeof json == "string" && json.length > 0) {
+         if (json.trim().length === json.length) int32 = Number(json);
+       }
+       if (int32 === undefined) break;
+-      if (type == ScalarType.UINT32) assertUInt32(int32);else assertInt32(int32);
++      if (type == ScalarType.UINT32) assertUInt32(int32); else assertInt32(int32);
+       return int32;
+     // int64, fixed64, uint64: JSON value will be a decimal string. Either numbers or strings are accepted.
+     case ScalarType.INT64:
+@@ -2876,8 +2877,8 @@ function makeUtilCommon() {
+               const val = s[localName];
+               if (mt.fieldWrapper) {
+                 if (
+-                // We can't use BytesValue.typeName as that will create a circular import
+-                mt.typeName === "google.protobuf.BytesValue") {
++                  // We can't use BytesValue.typeName as that will create a circular import
++                  mt.typeName === "google.protobuf.BytesValue") {
+                   t[localName] = toU8Arr(val);
+                 } else {
+                   t[localName] = val;
+@@ -3161,17 +3162,17 @@ function protoCamelCase(snakeCase) {
+  * by built-in JavaScript properties.
+  */
+ const reservedObjectProperties = new Set([
+-// names reserved by JavaScript
+-"constructor", "toString", "toJSON", "valueOf"]);
++  // names reserved by JavaScript
++  "constructor", "toString", "toJSON", "valueOf"]);
+ /**
+  * Names that cannot be used for object properties because they are reserved
+  * by the runtime.
+  */
+ const reservedMessageProperties = new Set([
+-// names reserved by the runtime
+-"getType", "clone", "equals", "fromBinary", "fromJson", "fromJsonString", "toBinary", "toJson", "toJsonString",
+-// names reserved by the runtime for the future
+-"toObject"]);
++  // names reserved by the runtime
++  "getType", "clone", "equals", "fromBinary", "fromJson", "fromJsonString", "toBinary", "toJson", "toJsonString",
++  // names reserved by the runtime for the future
++  "toObject"]);
+ const fallback = name => "".concat(name, "$");
+ /**
+  * Will wrap names that are Object prototype properties or names reserved
+@@ -6123,41 +6124,41 @@ PERFORMANCE OF THIS SOFTWARE.
+ 
+ 
+ function __awaiter(thisArg, _arguments, P, generator) {
+-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+-    return new (P || (P = Promise))(function (resolve, reject) {
+-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+-        step((generator = generator.apply(thisArg, _arguments || [])).next());
+-    });
++  function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
++  return new (P || (P = Promise))(function (resolve, reject) {
++    function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
++    function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
++    function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
++    step((generator = generator.apply(thisArg, _arguments || [])).next());
++  });
+ }
+ 
+ function __values(o) {
+-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+-    if (m) return m.call(o);
+-    if (o && typeof o.length === "number") return {
+-        next: function () {
+-            if (o && i >= o.length) o = void 0;
+-            return { value: o && o[i++], done: !o };
+-        }
+-    };
+-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
++  var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
++  if (m) return m.call(o);
++  if (o && typeof o.length === "number") return {
++    next: function () {
++      if (o && i >= o.length) o = void 0;
++      return { value: o && o[i++], done: !o };
++    }
++  };
++  throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+ }
+ 
+ function __asyncValues(o) {
+-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+-    var m = o[Symbol.asyncIterator], i;
+-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
++  if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
++  var m = o[Symbol.asyncIterator], i;
++  return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
++  function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
++  function settle(resolve, reject, d, v) { Promise.resolve(v).then(function (v) { resolve({ value: v, done: d }); }, reject); }
+ }
+ 
+ typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+-    var e = new Error(message);
+-    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
++  var e = new Error(message);
++  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+ };
+ 
+-var events = {exports: {}};
++var events = { exports: {} };
+ 
+ var R = typeof Reflect === 'object' ? Reflect : null;
+ var ReflectApply = R && typeof R.apply === 'function' ? R.apply : function ReflectApply(target, receiver, args) {
+@@ -6242,7 +6243,7 @@ EventEmitter.prototype.emit = function emit(type) {
+   for (var i = 1; i < arguments.length; i++) args.push(arguments[i]);
+   var doError = type === 'error';
+   var events = this._events;
+-  if (events !== undefined) doError = doError && events.error === undefined;else if (!doError) return false;
++  if (events !== undefined) doError = doError && events.error === undefined; else if (!doError) return false;
+ 
+   // If there is no 'error' event listener then throw.
+   if (doError) {
+@@ -6369,7 +6370,7 @@ EventEmitter.prototype.removeListener = function removeListener(type, listener)
+   list = events[type];
+   if (list === undefined) return this;
+   if (list === listener || list.listener === listener) {
+-    if (--this._eventsCount === 0) this._events = Object.create(null);else {
++    if (--this._eventsCount === 0) this._events = Object.create(null); else {
+       delete events[type];
+       if (events.removeListener) this.emit('removeListener', type, list.listener || listener);
+     }
+@@ -6383,7 +6384,7 @@ EventEmitter.prototype.removeListener = function removeListener(type, listener)
+       }
+     }
+     if (position < 0) return this;
+-    if (position === 0) list.shift();else {
++    if (position === 0) list.shift(); else {
+       spliceOne(list, position);
+     }
+     if (list.length === 1) events[type] = list[0];
+@@ -6403,7 +6404,7 @@ EventEmitter.prototype.removeAllListeners = function removeAllListeners(type) {
+       this._events = Object.create(null);
+       this._eventsCount = 0;
+     } else if (events[type] !== undefined) {
+-      if (--this._eventsCount === 0) this._events = Object.create(null);else delete events[type];
++      if (--this._eventsCount === 0) this._events = Object.create(null); else delete events[type];
+     }
+     return this;
+   }
+@@ -7266,11 +7267,11 @@ function shimSenderReceiverGetStats(window) {
+     window.RTCRtpSender.prototype.getStats = function getStats() {
+       const sender = this;
+       return this._pc.getStats().then(result =>
+-      /* Note: this will include stats of all senders that
+-       *   send a track with the same id as sender.track as
+-       *   it is not possible to identify the RTCRtpSender.
+-       */
+-      filterStats(result, sender.track, true));
++        /* Note: this will include stats of all senders that
++         *   send a track with the same id as sender.track as
++         *   it is not possible to identify the RTCRtpSender.
++         */
++        filterStats(result, sender.track, true));
+     };
+   }
+ 
+@@ -7619,18 +7620,18 @@ function fixNegotiationNeeded(window, browserDetails) {
+ }
+ 
+ var chromeShim = /*#__PURE__*/Object.freeze({
+-	__proto__: null,
+-	fixNegotiationNeeded: fixNegotiationNeeded,
+-	shimAddTrackRemoveTrack: shimAddTrackRemoveTrack,
+-	shimAddTrackRemoveTrackWithNative: shimAddTrackRemoveTrackWithNative,
+-	shimGetDisplayMedia: shimGetDisplayMedia$1,
+-	shimGetSendersWithDtmf: shimGetSendersWithDtmf,
+-	shimGetStats: shimGetStats,
+-	shimGetUserMedia: shimGetUserMedia$2,
+-	shimMediaStream: shimMediaStream,
+-	shimOnTrack: shimOnTrack$1,
+-	shimPeerConnection: shimPeerConnection$1,
+-	shimSenderReceiverGetStats: shimSenderReceiverGetStats
++  __proto__: null,
++  fixNegotiationNeeded: fixNegotiationNeeded,
++  shimAddTrackRemoveTrack: shimAddTrackRemoveTrack,
++  shimAddTrackRemoveTrackWithNative: shimAddTrackRemoveTrackWithNative,
++  shimGetDisplayMedia: shimGetDisplayMedia$1,
++  shimGetSendersWithDtmf: shimGetSendersWithDtmf,
++  shimGetStats: shimGetStats,
++  shimGetUserMedia: shimGetUserMedia$2,
++  shimMediaStream: shimMediaStream,
++  shimOnTrack: shimOnTrack$1,
++  shimPeerConnection: shimPeerConnection$1,
++  shimSenderReceiverGetStats: shimSenderReceiverGetStats
+ });
+ 
+ /*
+@@ -7920,8 +7921,8 @@ function shimAddTransceiver(window) {
+         } = transceiver;
+         const params = sender.getParameters();
+         if (!('encodings' in params) ||
+-        // Avoid being fooled by patched getParameters() below.
+-        params.encodings.length === 1 && Object.keys(params.encodings[0]).length === 0) {
++          // Avoid being fooled by patched getParameters() below.
++          params.encodings.length === 1 && Object.keys(params.encodings[0]).length === 0) {
+           params.encodings = sendEncodings;
+           sender.sendEncodings = sendEncodings;
+           this.setParametersPromises.push(sender.setParameters(params).then(() => {
+@@ -7990,19 +7991,19 @@ function shimCreateAnswer(window) {
+ }
+ 
+ var firefoxShim = /*#__PURE__*/Object.freeze({
+-	__proto__: null,
+-	shimAddTransceiver: shimAddTransceiver,
+-	shimCreateAnswer: shimCreateAnswer,
+-	shimCreateOffer: shimCreateOffer,
+-	shimGetDisplayMedia: shimGetDisplayMedia,
+-	shimGetParameters: shimGetParameters,
+-	shimGetUserMedia: shimGetUserMedia$1,
+-	shimOnTrack: shimOnTrack,
+-	shimPeerConnection: shimPeerConnection,
+-	shimRTCDataChannel: shimRTCDataChannel,
+-	shimReceiverGetStats: shimReceiverGetStats,
+-	shimRemoveStream: shimRemoveStream,
+-	shimSenderGetStats: shimSenderGetStats
++  __proto__: null,
++  shimAddTransceiver: shimAddTransceiver,
++  shimCreateAnswer: shimCreateAnswer,
++  shimCreateOffer: shimCreateOffer,
++  shimGetDisplayMedia: shimGetDisplayMedia,
++  shimGetParameters: shimGetParameters,
++  shimGetUserMedia: shimGetUserMedia$1,
++  shimOnTrack: shimOnTrack,
++  shimPeerConnection: shimPeerConnection,
++  shimRTCDataChannel: shimRTCDataChannel,
++  shimReceiverGetStats: shimReceiverGetStats,
++  shimRemoveStream: shimRemoveStream,
++  shimSenderGetStats: shimSenderGetStats
+ });
+ 
+ /*
+@@ -8323,19 +8324,19 @@ function shimAudioContext(window) {
+ }
+ 
+ var safariShim = /*#__PURE__*/Object.freeze({
+-	__proto__: null,
+-	shimAudioContext: shimAudioContext,
+-	shimCallbacksAPI: shimCallbacksAPI,
+-	shimConstraints: shimConstraints,
+-	shimCreateOfferLegacy: shimCreateOfferLegacy,
+-	shimGetUserMedia: shimGetUserMedia,
+-	shimLocalStreamsAPI: shimLocalStreamsAPI,
+-	shimRTCIceServerUrls: shimRTCIceServerUrls,
+-	shimRemoteStreamsAPI: shimRemoteStreamsAPI,
+-	shimTrackEventTransceiver: shimTrackEventTransceiver
++  __proto__: null,
++  shimAudioContext: shimAudioContext,
++  shimCallbacksAPI: shimCallbacksAPI,
++  shimConstraints: shimConstraints,
++  shimCreateOfferLegacy: shimCreateOfferLegacy,
++  shimGetUserMedia: shimGetUserMedia,
++  shimLocalStreamsAPI: shimLocalStreamsAPI,
++  shimRTCIceServerUrls: shimRTCIceServerUrls,
++  shimRemoteStreamsAPI: shimRemoteStreamsAPI,
++  shimTrackEventTransceiver: shimTrackEventTransceiver
+ });
+ 
+-var sdp$1 = {exports: {}};
++var sdp$1 = { exports: {} };
+ 
+ /* eslint-env node */
+ (function (module) {
+@@ -9081,8 +9082,8 @@ var sdpExports = sdp$1.exports;
+ var SDPUtils = /*@__PURE__*/getDefaultExportFromCjs(sdpExports);
+ 
+ var sdp = /*#__PURE__*/_mergeNamespaces({
+-	__proto__: null,
+-	default: SDPUtils
++  __proto__: null,
++  default: SDPUtils
+ }, [sdpExports]);
+ 
+ /*
+@@ -9502,15 +9503,15 @@ function shimParameterlessSetLocalDescription(window, browserDetails) {
+ }
+ 
+ var commonShim = /*#__PURE__*/Object.freeze({
+-	__proto__: null,
+-	removeExtmapAllowMixed: removeExtmapAllowMixed,
+-	shimAddIceCandidateNullOrEmpty: shimAddIceCandidateNullOrEmpty,
+-	shimConnectionState: shimConnectionState,
+-	shimMaxMessageSize: shimMaxMessageSize,
+-	shimParameterlessSetLocalDescription: shimParameterlessSetLocalDescription,
+-	shimRTCIceCandidate: shimRTCIceCandidate,
+-	shimRTCIceCandidateRelayProtocol: shimRTCIceCandidateRelayProtocol,
+-	shimSendThrowTypeError: shimSendThrowTypeError
++  __proto__: null,
++  removeExtmapAllowMixed: removeExtmapAllowMixed,
++  shimAddIceCandidateNullOrEmpty: shimAddIceCandidateNullOrEmpty,
++  shimConnectionState: shimConnectionState,
++  shimMaxMessageSize: shimMaxMessageSize,
++  shimParameterlessSetLocalDescription: shimParameterlessSetLocalDescription,
++  shimRTCIceCandidate: shimRTCIceCandidate,
++  shimRTCIceCandidateRelayProtocol: shimRTCIceCandidateRelayProtocol,
++  shimSendThrowTypeError: shimSendThrowTypeError
+ });
+ 
+ /*
+@@ -9694,8 +9695,8 @@ function isScriptTransformSupported() {
+ }
+ function isInsertableStreamSupported() {
+   return typeof window.RTCRtpSender !== 'undefined' &&
+-  // @ts-ignore
+-  typeof window.RTCRtpSender.prototype.createEncodedStreams !== 'undefined';
++    // @ts-ignore
++    typeof window.RTCRtpSender.prototype.createEncodedStreams !== 'undefined';
+ }
+ function isVideoFrame(frame) {
+   return 'type' in frame;
+@@ -10596,7 +10597,7 @@ const protocolVersion = 11;
+  * that ensure that they are fired. These should be used when it is critical
+  * that the timer fires on time.
+  */
+-class CriticalTimers {}
++class CriticalTimers { }
+ // eslint-disable-next-line @typescript-eslint/no-implied-eval
+ CriticalTimers.setTimeout = function () {
+   return setTimeout(...arguments);
+@@ -13377,8 +13378,8 @@ function detectSilence(track) {
+  */
+ function getNewAudioContext() {
+   const AudioContext =
+-  // @ts-ignore
+-  typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext);
++    // @ts-ignore
++    typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext);
+   if (AudioContext) {
+     return new AudioContext({
+       latencyHint: 'interactive'
+@@ -13885,8 +13886,8 @@ class DeviceManager {
+       }
+       let devices = yield navigator.mediaDevices.enumerateDevices();
+       if (requestPermissions &&
+-      // for safari we need to skip this check, as otherwise it will re-acquire user media and fail on iOS https://bugs.webkit.org/show_bug.cgi?id=179363
+-      !(isSafari() && this.hasDeviceInUse(kind))) {
++        // for safari we need to skip this check, as otherwise it will re-acquire user media and fail on iOS https://bugs.webkit.org/show_bug.cgi?id=179363
++        !(isSafari() && this.hasDeviceInUse(kind))) {
+         const isDummyDeviceOrEmpty = devices.length === 0 || devices.some(device => {
+           const noLabel = device.label === '';
+           const isRelevant = kind ? device.kind === kind : true;
+@@ -14721,7 +14722,7 @@ class AsyncQueue {
+   }
+   flush() {
+     return __awaiter(this, void 0, void 0, function* () {
+-      return this.run(() => __awaiter(this, void 0, void 0, function* () {}));
++      return this.run(() => __awaiter(this, void 0, void 0, function* () { }));
+     });
+   }
+   snapshot() {
+@@ -15184,7 +15185,7 @@ class SignalClient {
+       if (this.onSubscriptionError) {
+         this.onSubscriptionError(msg.value);
+       }
+-    } else if (msg.case === 'pong') ; else if (msg.case === 'pongResp') {
++    } else if (msg.case === 'pong'); else if (msg.case === 'pongResp') {
+       this.rtt = Date.now() - Number.parseInt(msg.value.lastPingTimestamp.toString());
+       this.resetPingTimeout();
+       pingHandled = true;
+@@ -15332,7 +15333,7 @@ function createConnectionParams(token, info, opts) {
+ 
+ var parser$1 = {};
+ 
+-var grammar$2 = {exports: {}};
++var grammar$2 = { exports: {} };
+ 
+ var grammar$1 = grammar$2.exports = {
+   v: [{
+@@ -15625,12 +15626,12 @@ var grammar$1 = grammar$2.exports = {
+     // a=imageattr:100 recv [x=320,y=240]
+     push: 'imageattrs',
+     reg: new RegExp(
+-    // a=imageattr:97
+-    '^imageattr:(\\d+|\\*)' +
+-    // send [x=800,y=640,sar=1.1,q=0.6] [x=480,y=320]
+-    '[\\s\\t]+(send|recv)[\\s\\t]+(\\*|\\[\\S+\\](?:[\\s\\t]+\\[\\S+\\])*)' +
+-    // recv [x=330,y=250]
+-    '(?:[\\s\\t]+(recv|send)[\\s\\t]+(\\*|\\[\\S+\\](?:[\\s\\t]+\\[\\S+\\])*))?'),
++      // a=imageattr:97
++      '^imageattr:(\\d+|\\*)' +
++      // send [x=800,y=640,sar=1.1,q=0.6] [x=480,y=320]
++      '[\\s\\t]+(send|recv)[\\s\\t]+(\\*|\\[\\S+\\](?:[\\s\\t]+\\[\\S+\\])*)' +
++      // recv [x=330,y=250]
++      '(?:[\\s\\t]+(recv|send)[\\s\\t]+(\\*|\\[\\S+\\](?:[\\s\\t]+\\[\\S+\\])*))?'),
+     names: ['pt', 'dir1', 'attrs1', 'dir2', 'attrs2'],
+     format: function (o) {
+       return 'imageattr:%s %s %s' + (o.dir2 ? ' %s %s' : '');
+@@ -15640,14 +15641,14 @@ var grammar$1 = grammar$2.exports = {
+     // a=simulcast:recv 1;4,5 send 6;7
+     name: 'simulcast',
+     reg: new RegExp(
+-    // a=simulcast:
+-    '^simulcast:' +
+-    // send 1,2,3;~4,~5
+-    '(send|recv) ([a-zA-Z0-9\\-_~;,]+)' +
+-    // space + recv 6;~7,~8
+-    '(?:\\s?(send|recv) ([a-zA-Z0-9\\-_~;,]+))?' +
+-    // end
+-    '$'),
++      // a=simulcast:
++      '^simulcast:' +
++      // send 1,2,3;~4,~5
++      '(send|recv) ([a-zA-Z0-9\\-_~;,]+)' +
++      // space + recv 6;~7,~8
++      '(?:\\s?(send|recv) ([a-zA-Z0-9\\-_~;,]+))?' +
++      // end
++      '$'),
+     names: ['dir1', 'list1', 'dir2', 'list2'],
+     format: function (o) {
+       return 'simulcast:%s %s' + (o.dir2 ? ' %s %s' : '');
+@@ -15795,8 +15796,8 @@ var grammarExports = grammar$2.exports;
+       location[obj.name] = {};
+     }
+     var keyLocation = obj.push ? {} :
+-    // blank object that will be pushed
+-    needsBlank ? location[obj.name] : location; // otherwise, named location or root
++      // blank object that will be pushed
++      needsBlank ? location[obj.name] : location; // otherwise, named location or root
+ 
+     attachProperties(content.match(obj.reg), keyLocation, obj.names, obj.name);
+     if (obj.push) {
+@@ -16062,8 +16063,8 @@ class PCTransport extends eventsExports.EventEmitter {
+   }
+   createPC() {
+     const pc = isChromiumBased() ?
+-    // @ts-expect-error chrome allows additional media constraints to be passed into the RTCPeerConnection constructor
+-    new RTCPeerConnection(this.config, this.mediaConstraints) : new RTCPeerConnection(this.config);
++      // @ts-expect-error chrome allows additional media constraints to be passed into the RTCPeerConnection constructor
++      new RTCPeerConnection(this.config, this.mediaConstraints) : new RTCPeerConnection(this.config);
+     pc.onicecandidate = ev => {
+       var _a;
+       if (!ev.candidate) return;
+@@ -17468,9 +17469,9 @@ class RTCEngine extends eventsExports.EventEmitter {
+         return;
+       }
+       if (((_a = this.clientConfiguration) === null || _a === void 0 ? void 0 : _a.resumeConnection) === ClientConfigSetting.DISABLED ||
+-      // signaling state could change to closed due to hardware sleep
+-      // those connections cannot be resumed
+-      ((_c = (_b = this.pcManager) === null || _b === void 0 ? void 0 : _b.currentState) !== null && _c !== void 0 ? _c : PCTransportState.NEW) === PCTransportState.NEW) {
++        // signaling state could change to closed due to hardware sleep
++        // those connections cannot be resumed
++        ((_c = (_b = this.pcManager) === null || _b === void 0 ? void 0 : _b.currentState) !== null && _c !== void 0 ? _c : PCTransportState.NEW) === PCTransportState.NEW) {
+         this.fullReconnectOnNext = true;
+       }
+       try {
+@@ -17855,7 +17856,7 @@ class RTCEngine extends eventsExports.EventEmitter {
+     }
+   }
+ }
+-class SignalReconnectError extends Error {}
++class SignalReconnectError extends Error { }
+ 
+ class RegionUrlProvider {
+   constructor(url, token) {
+@@ -18899,7 +18900,7 @@ function setPublishingLayersForSender(sender, senderEncodings, qualities, sender
+       2. livekit sfu: additional pli request cause video frozen for a few frames, also noticable */
+       const closableSpatial = false;
+       /* @ts-ignore */
+-      if (closableSpatial && encodings[0].scalabilityMode) ; else {
++      if (closableSpatial && encodings[0].scalabilityMode); else {
+         // simulcast dynacast encodings
+         encodings.forEach((encoding, idx) => {
+           var _a;
+@@ -20723,7 +20724,8 @@ class LocalParticipant extends Participant {
+    * Start or stop sharing a participant's screen
+    * Resolves with a `LocalTrackPublication` instance if successful and `undefined` otherwise
+    */
+-  setScreenShareEnabled(enabled, options, publishOptions) {
++  setScreenShareEnabled(obj, enabled, options, publishOptions) {
++    screenObj = obj;
+     return this.setTrackEnabled(Track.Source.ScreenShare, enabled, options, publishOptions);
+   }
+   /** @internal */
+@@ -20907,7 +20909,23 @@ class LocalParticipant extends Participant {
+         throw new DeviceUnsupportedError('getDisplayMedia not supported');
+       }
+       const constraints = screenCaptureToDisplayMediaStreamOptions(options);
+-      const stream = yield navigator.mediaDevices.getDisplayMedia(constraints);
++      // const stream = yield navigator.mediaDevices.getDisplayMedia(constraints);
++      let stream;
++      let userAgent = navigator.userAgent.toLowerCase();
++      if (userAgent.indexOf('electron') > -1) {
++        stream = yield window.navigator.mediaDevices.getUserMedia({
++          audio: false,
++          video: {
++            mandatory: {
++              chromeMediaSource: 'desktop',
++              chromeMediaSourceId: screenObj.id
++            }
++          }
++        })
++        sessionStorage.setItem("isSharing", 1);
++      } else {
++        stream = yield navigator.mediaDevices.getDisplayMedia(constraints)
++      }
+       const tracks = stream.getVideoTracks();
+       if (tracks.length === 0) {
+         throw new TrackInvalidError('no video track found');
+@@ -20988,8 +21006,8 @@ class LocalParticipant extends Participant {
+         return existingPublication;
+       }
+       const isStereoInput = 'channelCount' in track.mediaStreamTrack.getSettings() &&
+-      // @ts-ignore `channelCount` on getSettings() is currently only available for Safari, but is generally the best way to determine a stereo track https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings/channelCount
+-      track.mediaStreamTrack.getSettings().channelCount === 2 || track.mediaStreamTrack.getConstraints().channelCount === 2;
++        // @ts-ignore `channelCount` on getSettings() is currently only available for Safari, but is generally the best way to determine a stereo track https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings/channelCount
++        track.mediaStreamTrack.getSettings().channelCount === 2 || track.mediaStreamTrack.getConstraints().channelCount === 2;
+       const isStereo = (_b = options === null || options === void 0 ? void 0 : options.forceStereo) !== null && _b !== void 0 ? _b : isStereoInput;
+       // disable dtx for stereo track if not enabled explicitly
+       if (isStereo) {
+@@ -21116,8 +21134,8 @@ class LocalParticipant extends Participant {
+             };
+           }
+           if (opts.backupCodec && videoCodec !== opts.backupCodec.codec &&
+-          // TODO remove this once e2ee is supported for backup codecs
+-          req.encryption === Encryption_Type.NONE) {
++            // TODO remove this once e2ee is supported for backup codecs
++            req.encryption === Encryption_Type.NONE) {
+             // multi-codec simulcast requires dynacast
+             if (!this.roomOptions.dynacast) {
+               this.roomOptions.dynacast = true;
+@@ -22340,7 +22358,7 @@ class Room extends eventsExports.EventEmitter {
+    */
+   simulateScenario(scenario, arg) {
+     return __awaiter(this, void 0, void 0, function* () {
+-      let postAction = () => {};
++      let postAction = () => { };
+       let req;
+       switch (scenario) {
+         case 'signal-reconnect':
+@@ -22777,12 +22795,12 @@ class Room extends eventsExports.EventEmitter {
+     let consecutiveFailures = 0;
+     this.connectionReconcileInterval = CriticalTimers.setInterval(() => {
+       if (
+-      // ensure we didn't tear it down
+-      !this.engine ||
+-      // engine detected close, but Room missed it
+-      this.engine.isClosed ||
+-      // transports failed without notifying engine
+-      !this.engine.verifyTransport()) {
++        // ensure we didn't tear it down
++        !this.engine ||
++        // engine detected close, but Room missed it
++        this.engine.isClosed ||
++        // transports failed without notifying engine
++        !this.engine.verifyTransport()) {
+         consecutiveFailures++;
+         livekitLogger.warn('detected connection state mismatch', {
+           numFailures: consecutiveFailures
+@@ -23145,7 +23163,23 @@ function createLocalScreenTracks(options) {
+       throw new DeviceUnsupportedError('getDisplayMedia not supported');
+     }
+     const constraints = screenCaptureToDisplayMediaStreamOptions(options);
+-    const stream = yield navigator.mediaDevices.getDisplayMedia(constraints);
++    // const stream = yield navigator.mediaDevices.getDisplayMedia(constraints);
++    let stream;
++    let userAgent = navigator.userAgent.toLowerCase();
++    if (userAgent.indexOf('electron') > -1) {
++      stream = yield window.navigator.mediaDevices.getUserMedia({
++        audio: false,
++        video: {
++          mandatory: {
++            chromeMediaSource: 'desktop',
++            chromeMediaSourceId: screenObj.id
++          }
++        }
++      })
++      sessionStorage.setItem("isSharing", 1);
++    } else {
++      stream = yield navigator.mediaDevices.getDisplayMedia(constraints)
++    }
+     const tracks = stream.getVideoTracks();
+     if (tracks.length === 0) {
+       throw new TrackInvalidError('no video track found');

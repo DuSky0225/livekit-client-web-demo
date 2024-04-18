@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="94px" viewBox="0 0 94 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ppt_slice</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-38.000000, -2340.000000)">
+            <g id="ppt" transform="translate(51.000000, 2345.000000)">
+                <path d="M6,0 L51.437198,0 L51.437198,0 L68,21.3728059 L68,78 C68,81.3137085 65.3137085,84 62,84 L6,84 C2.6862915,84 4.05812251e-16,81.3137085 0,78 L0,6 C-4.05812251e-16,2.6862915 2.6862915,6.08718376e-16 6,0 Z" id="矩形" fill="#FD7541"></path>
+                <g id="编组-2" transform="translate(20.000000, 28.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M12.74532,2.02776 C5.70444,2.02776 0,7.83888 0,15.00576 C0,22.17222 5.70822,27.98376 12.74532,27.98376 C19.782,27.98376 25.49022,22.17222 25.49022,15.00156 L12.74574,15.00156 L12.74574,2.02776 L12.74532,2.02776 Z" id="路径" opacity="0.4"></path>
+                    <path d="M14.73066,0 L14.73066,12.9822 L27.47178,12.9822 C27.47178,5.81154 21.76734,0 14.72688,0 L14.73066,0 L14.73066,0 Z" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

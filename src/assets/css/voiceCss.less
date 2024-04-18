@@ -1,0 +1,225 @@
+.clearfix {
+  width: 100%;
+  height: 100vh;
+  background: #171a1d;
+}
+
+.title {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: #222329;
+
+  p {
+    font-family: PingFangSC-Semibold,Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+}
+
+.transparency {
+  opacity: 0.25;
+}
+
+.toolbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222329;
+
+  .iconBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 24px;
+    position: relative;
+    z-index: 2;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+
+    span {
+      font-family: PingFangSC-Medium,Helvetica, Arial, Verdana, Tahoma, sans-serif;
+      font-size: 14px;
+      color: #ffffff;
+      text-align: center;
+      font-weight: 500;
+    }
+  }
+}
+
+.audio-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  padding-top: 100px;
+  box-sizing: border-box;
+  align-items: baseline !important;
+}
+
+.audio-center {
+  display: flex;
+  top: -80px;
+  padding: 8px 12px;
+  align-items: center;
+  font-size: 14px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 6px;
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: 14px;
+    color: #fff;
+    font-family: "microsoft yahei",Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  }
+}
+.meeting_time {
+  font-family: PingFangSC-Regular,Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 400;
+  margin-left: 38px;
+}
+.mainWindow {
+  width: 100%;
+  height: calc(100vh - 124px);
+  overflow: hidden;
+  position: relative;
+}
+.audioClass {
+  height: 0;
+  display: none;
+}
+.memberList {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+}
+.memberBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 80px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.isComing {
+  opacity: 0.47;
+}
+.headImg {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  margin-bottom: 8px;
+
+  .headIcon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  .iconHead {
+    width: 16px;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .waitGif {
+    width: 68px;
+    height: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+}
+.memberInfo {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-family: PingFangSC-Regular,Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 0;
+    font-weight: 400;
+    margin-right: 4px;
+  }
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+.wait {
+  width: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #aaa7a4;
+
+    &:first-child {
+      animation-name: waiting;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    &:nth-child(2) {
+      animation-name: waiting;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-delay: 0.333s;
+    }
+    &:last-child {
+      animation-name: waiting;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-delay: 0.666s;
+    }
+  }
+}
+@keyframes waiting {
+  0% {
+    background: #fff;
+  }
+  100% {
+    background: #171a1d;
+  }
+}
